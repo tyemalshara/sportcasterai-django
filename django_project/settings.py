@@ -28,7 +28,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = ["sportcasterai-ccbd74415be1.herokuapp.com", "127.0.0.1"]
-CSRF_TRUSTED_ORIGINS = ["sportcasterai-ccbd74415be1.herokuapp.com"]
+# CSRF_TRUSTED_ORIGINS = ["sportcasterai-ccbd74415be1.herokuapp.com"]
+CSRF_TRUSTED_ORIGINS = ["https://sportcasterai-ccbd74415be1.herokuapp.com"]
 
 # Application definition
 
