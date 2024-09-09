@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = ["sportcasterai-ccbd74415be1.herokuapp.com", "127.0.0.1"]
-CSRF_TRUSTED_ORIGINS = ["https://*.replit.dev", "https://*.replit.app"]
+CSRF_TRUSTED_ORIGINS = ["sportcasterai-ccbd74415be1.herokuapp.com"]
 
 # Application definition
 
@@ -140,7 +140,6 @@ X_FRAME_OPTIONS = '*'
 
 # Run the server by selecting the play button.
 # You’ll get a disallowed host. To solve this
-ALLOWED_HOSTS = ['894b0fc4-b9b9-4bff-ba7e-bf46c032f3b0-00-1wlpavc3lv1hl.picard.replit.dev']
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
