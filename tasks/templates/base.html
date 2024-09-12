@@ -80,12 +80,12 @@
       <section class="about section-padding" id="about">
         <div class="container">
             {% block content %}
-              <form method="POST" action="{% url 'login' %}">
+<!--               <form method="POST" action="{% url 'login' %}">
                   {% csrf_token %}
                   {{ form.as_p }}
                   <p>Dont't have an account? Create one <a href="/register/">here</a></p>
                   <button type="submit">Submit</button>
-              </form>
+              </form> -->
             {% endblock %}
           </div>
         </div>
