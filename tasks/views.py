@@ -39,5 +39,5 @@ def submit(request):
     form = UserForm()
   return render(request, "form.html", {'form': form})
 
-def login(request):
-  return render(request, "login.html")
+# def login(request):
+#   return render(request, "login.html")
