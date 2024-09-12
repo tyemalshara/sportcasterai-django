@@ -28,6 +28,7 @@ urlpatterns = [
     path("",views.index),
     path('submit/', views.submit, name='submit'),
     path("register/", v.register, name="register"),
+    path("accounts/", include("django.contrib.auth.urls")),
     # path("login/", views.login, name="login"),
     path('', include("django.contrib.auth.urls")),
     # path('', include("tasks.urls")),

@@ -9,6 +9,11 @@
     {% csrf_token %}
     {{ form|crispy }}
     <p>Don't have an account? Create one <a href="/register/">here</p>
+    {% if user.is_authenticated %}
+      <p>This should be added to users that are already logged in <a href="{% url 'password_change' %}">Password Change</a></p>
+    {% else %}
+      <p><a href="{% url 'password_reset' %}">Password Reset</a></p>
+    {% endif %}
     <button type="submit" class="btn btn-success">Login</button>
   </form>
 {% endblock %}
