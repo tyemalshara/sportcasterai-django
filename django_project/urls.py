@@ -20,7 +20,7 @@ from django.urls.conf import include
 
 from tasks import views    # view from first app
 from register import views as v    # view from second app
-
+from products import views as pv
 # from . import views
 
 urlpatterns = [
