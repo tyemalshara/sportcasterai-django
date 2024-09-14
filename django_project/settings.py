@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'crispy_forms',
     'crispy_bootstrap4',
-
+    'products',
 ]
 
 MIDDLEWARE = [
