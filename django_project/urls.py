@@ -32,6 +32,9 @@ urlpatterns = [
     # path("login/", views.login, name="login"),
     path('', include("django.contrib.auth.urls")),
     # path('', include("tasks.urls")),
+    path("pricing/", pv.home, name="home"),
+    path("success/", pv.success, name="success"),
+    path("cancel/", pv.cancel, name="cancel"),
 ]
 
 # a flag for handling the 404 error
