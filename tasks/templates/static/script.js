@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function() {
 document.getElementById('apply-button').addEventListener('click', function() {
     const basePrice = 19.99;
     const sportPrice = 3.99;
@@ -17,6 +18,6 @@ document.getElementById('apply-button').addEventListener('click', function() {
     priceTag.querySelector('.sign').textContent = '€';
     priceTag.querySelector('.month').textContent = '/MON';
 
-    document.getElementById('basic-price').textContent = newPrice.toFixed(2) + ' €/month';
     document.getElementById('selected-sports').textContent = 'Selected sports: ' + (selectedSports.length > 0 ? selectedSports.join(', ') : 'None');
+});
 });
