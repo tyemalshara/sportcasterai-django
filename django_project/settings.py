@@ -151,3 +151,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # new
 
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+
+REDIRECT_DOMAIN = 'https://sportcasterai-ccbd74415be1.herokuapp.com'
+STRIPE_WEBHOOK_SECRET_TEST = os.environ.get('STRIPE_WEBHOOK_SECRET_TEST')
+

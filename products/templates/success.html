@@ -1,1 +1,12 @@
-<h1>Success Page</h1>
+{% extends "base.html" %}
+
+{% block title %}Payment Successful{% endblock %}
+
+{% block content %}
+
+<body>
+  <div class="container home_msg">
+    <h1>Thanks for your order {{ customer.name }}!</h1>
+  </div>
+</body>
+{% endblock %}

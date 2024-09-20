@@ -103,6 +103,210 @@ body {
 .team .card-body i {
 	font-size: 20px;
 }
+
+/* This is the start of css styling for the price plan */
+.buzz {
+	/* font-family: Arial, sans-serif; */
+	background-color: #f4f4f4;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+.pricing-table {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	max-width: 1000px;
+}
+
+.plan {
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	text-align: center;
+	flex: 1;
+	margin: 0 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plan h2 {
+	margin-top: 0;
+}
+
+.price {
+	font-size: 24px;
+	color: #333;
+}
+
+.plan ul {
+	list-style: none;
+	padding: 0;
+	flex-grow: 1;
+}
+
+.plan ul li {
+	padding: 10px 0;
+	border-bottom: 1px solid #eee;
+}
+
+.plan button {
+	background: #007bff;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 20px;
+	align-self: center;
+}
+
+.plan button:hover {
+	background: #0056b3;
+}
+
+.highlighted {
+	border: 2px solid #fbff00;
+	transform: scale(1.05);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#sports {
+	margin-top: 10px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+
+.custom-checkbox {
+	position: relative;
+	padding-left: 35px;
+	cursor: pointer;
+	font-size: 16px;
+	user-select: none;
+	display: flex;
+	align-items: center;
+}
+
+.custom-checkbox input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.custom-checkbox input:disabled + .checkmark {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+.custom-checkbox.disabled {
+	color: grey;
+	text-decoration: line-through;
+}
+
+.custom-checkbox.disabled:hover::after {
+	content: attr(title);
+	position: absolute;
+	left: 35px;
+	top: -25px;
+	background: #333;
+	color: #fff;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border-radius: 5px;
+}
+
+.custom-checkbox:hover input:not(:disabled) ~ .checkmark {
+	background-color: #ccc;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+	background-color: #007bff;
+}
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.custom-checkbox .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+}
+
+#selected-sports {
+	margin-top: 10px;
+	font-size: 14px;
+	color: #333;
+}
+
+.generic_price_tag .price{
+display: block;
+}
+
+.generic_price_tag .price .sign{
+	display: inline-block;
+	font-family: "Lato",sans-serif;
+	font-size: 28px;
+	font-weight: 400;
+	vertical-align: middle;
+}
+
+.generic_price_tag .price .currency{
+	font-family: "Lato",sans-serif;
+	font-size: 60px;
+	font-weight: 300;
+	letter-spacing: -2px;
+	line-height: 60px;
+	padding: 0;
+	vertical-align: middle;
+}
+
+.generic_price_tag .price .cent{
+	display: inline-block;
+	font-family: "Lato",sans-serif;
+	font-size: 24px;
+	font-weight: 400;
+	vertical-align: bottom;
+}
+
+.generic_price_tag .month{
+	font-family: "Lato",sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: 3px;
+	vertical-align: bottom;
+}
+/* This is the end of css styling for the price plan */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.carousel-caption {
 		bottom: 370px;

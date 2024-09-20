@@ -1,3 +1,18 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
+class UserPayment(models.Model) :
+  app_user = models.ForeignKey(User, on_delete=models.CASCADE)
+  payment_bool = models.BooleanField(default=False)
+  stripe_checkout_id = models.CharField(max_length=500)
+
+  def __str__(self):
+    return f"{self.app_user}"
+  
+@receiver(post_save, sender=User)
+def create_user_payment(sender, instance, created, **kwargs):
+  if created:
+    UserPayment.objects.create(app_user=instance)
 # Create your models here.

@@ -1,5 +1,116 @@
-<h1>Homepage</h1>
-<form method="post">
-  {% csrf_token %}
-  <button type="submit">Purchase!</button>
-</form>
+{% extends "base.html" %}
+
+{% block title %}Price Plans{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block price %}
+
+<section class="section-padding">
+  <div class="container section-padding">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-header text-center pb-5">
+          <h2>Our Pricing Plans</h2>
+          <p>We offer a wide variety of packages<br>
+          for a whole bunch of different sports</p>
+        </div>
+      </div>
+    </div>
+  <div class="row">
+    <div class="pricing-table section-padding">
+      <div class="plan">
+        <h2>Profi-Paket</h2>
+        <div class="generic_price_tag clearfix">	
+          <span class="price">
+            <span class="sign">€</span>
+            <span class="currency">19</span>
+            <span class="cent">.99</span>
+            <span class="month">/MON</span>
+          </span>
+        </div>
+        <ul>
+          <li>Football Analysis</li>
+          <li>Additional Sports 2.00€ each</li>
+          <li>Email Support</li>
+        </ul>
+        <label>Choose sports:</label>
+        <div id="sports" class="checkbox-container">
+          <label class="custom-checkbox">
+            <input type="checkbox" value="football"> 
+            <span class="checkmark"></span> Football
+          </label>
+          <label class="custom-checkbox disabled" title="Coming soon">
+              <input type="checkbox" value="basketball" disabled> 
+              <span class="checkmark"></span> Basketball
+          </label>
+          <label class="custom-checkbox disabled" title="Coming soon">
+              <input type="checkbox" value="tennis" disabled> 
+              <span class="checkmark"></span> Tennis
+          </label>
+          <label class="custom-checkbox disabled" title="Coming soon">
+              <input type="checkbox" value="swimming" disabled> 
+              <span class="checkmark"></span> Swimming
+          </label>
+        </div>
+        <button id="apply-button">Apply</button>
+        <p id="selected-sports"></p>
+        {% if user.is_authenticated %}
+          <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-light" width="180" height="50"><i class="bi bi-bag" style="font-size: 1rem;">Get Profi-Paket!</i></button>
+          </form>
+        {% else %}
+          <!-- redirect to login page -->
+          <p>You are not logged in. Login <a href="/login/">here</a> to be able purchase the package.</p>
+        {% endif %}
+      </div>
+      <div class="plan highlighted">
+        <h2>Premium-Paket</h2>
+        <div class="generic_price_tag clearfix">	
+          <span class="price">
+            <span class="sign">€</span>
+            <span class="currency">29</span>
+            <span class="cent">.99</span>
+            <span class="month">/MON</span>
+          </span>
+        </div>
+        <ul>
+          <li>50 Projects</li>
+          <li>20 GB Storage</li>
+          <li>Priority Email Support</li>
+        </ul>
+        {% if user.is_authenticated %}
+          <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-light" width="180" height="50"><i class="bi bi-bag-fill" style="font-size: 1rem;">Get Premium-Paket!</i></button>
+          </form>
+        {% else %}
+          <!-- redirect to login page -->
+          <p>You are not logged in. Login <a href="/login/">here</a> to be able purchase the package.</p>
+        {% endif %}
+      </div>
+      <div class="plan">
+        <h2>Enterprice</h2>
+        <div class="generic_price_tag clearfix">	
+          <span class="price">
+            <span class="sign">€</span>
+            <span class="currency">XX</span>
+            <span class="cent">.XX</span>
+            <span class="month">/MON or /YEAR</span>
+          </span>
+        </div>
+        <ul>
+          <li>You define it</li>
+          <li>100 GB Storage</li>
+          <li>Phone & Email Support</li>
+        </ul>
+        <p class="lead"> Contact us for pricing plan tailored to your need -> contect@sportcasterai.com</p>
+        <!-- <button>Sign Up</button> -->
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -35,6 +35,7 @@ urlpatterns = [
     path("pricing/", pv.home, name="home"),
     path("success/", pv.success, name="success"),
     path("cancel/", pv.cancel, name="cancel"),
+    path("stripe_webhook/", pv.stripe_webhook, name="stripe_webhook"),
 ]
 
 # a flag for handling the 404 error

@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import UserPayment
 
-# Register your models here.
+class UserPaymentAdmin(admin.ModelAdmin):
+  list_display = ('app_user', 'payment_bool', 'stripe_checkout_id',)
+
+admin.site.register(UserPayment, UserPaymentAdmin)
