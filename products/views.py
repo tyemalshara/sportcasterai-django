@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt  # new
 import stripe  # new
 import time
+from django import forms 
 
 class PricePlanForm(forms.Form):
     football = forms.BooleanField(required=False)
