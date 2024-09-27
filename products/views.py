@@ -9,24 +9,60 @@ from django.views.decorators.csrf import csrf_exempt  # new
 import stripe  # new
 import time
 
+class PricePlanForm(forms.Form):
+    football = forms.BooleanField(required=False)
+    basketball = forms.BooleanField(required=False)
+    tennis = forms.BooleanField(required=False)
+
 def home(request):  # new
     stripe.api_key = settings.STRIPE_SECRET_KEY
     customer_id = request.user.id 
     if request.method == "POST":
-        checkout_session = stripe.checkout.Session.create(
-            line_items=[
-                {
-                    "price": "price_1PyWjBAZ52UONzehTNuyljJy",  # enter yours here!!!
-                    "quantity": 1,
-                }
-            ],
-            mode="payment",
-            customer_creation='always',    # assign an 'always' string to create a cutomer id if not provided 
-            success_url= settings.REDIRECT_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}',
-            # success_url=request.build_absolute_uri(reverse("success")),
-            cancel_url=request.build_absolute_uri(reverse("cancel")),
-        )
-        return redirect(checkout_session.url, code=303)
+        if 'get_profi_paket' in request.POST and request.POST['get_profi_paket'] == 'get_profi_paket':
+            form = PricePlanForm(request.POST)
+            if form.is_valid():
+                features = sum([
+                    form.cleaned_data['football'], 
+                    form.cleaned_data['basketball'], 
+                    form.cleaned_data['tennis']])
+                base_price = 19.99
+                additional_price = 3.99 * features
+                total_price = base_price + additional_price
+                checkout_session = stripe.checkout.Session.create(
+                    payment_method_types=['card'],
+                    line_items=[{
+                        'price_data': {
+                            'currency': 'usd',
+                            'product_data': {
+                                'name': 'Your Product Name',
+                            },
+                            'unit_amount': int(total_price * 100),  # Convert to cents
+                        },
+                        'quantity': 1,
+                    }],
+                    mode='payment',
+                    customer_creation='always',
+                    success_url= settings.REDIRECT_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}',
+                    cancel_url=request.build_absolute_uri(reverse("cancel")),
+                )
+                return redirect(checkout_session.url, code=303)
+            else:
+                    form = PricePlanForm()
+        if 'get_premium_paket' in request.POST and request.POST['get_premium_paket'] == 'get_premium_paket':
+            checkout_session = stripe.checkout.Session.create(
+                line_items=[
+                    {
+                        "price": "price_1PyWjBAZ52UONzehTNuyljJy",  # enter yours here!!!
+                        "quantity": 1,
+                    }
+                ],
+                mode="payment",
+                customer_creation='always',    # assign an 'always' string to create a cutomer id if not provided 
+                success_url= settings.REDIRECT_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}',
+                # success_url=request.build_absolute_uri(reverse("success")),
+                cancel_url=request.build_absolute_uri(reverse("cancel")),
+            )
+            return redirect(checkout_session.url, code=303)
     return render(request, "home.html")
 
 def success(request):

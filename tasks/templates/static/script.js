@@ -1,23 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
-document.getElementById('apply-button').addEventListener('click', function() {
+function updatePrice() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     const basePrice = 19.99;
-    const sportPrice = 3.99;
-    const sportsCheckboxes = document.querySelectorAll('#sports input[type="checkbox"]');
-    const selectedSports = Array.from(sportsCheckboxes)
-                                .filter(checkbox => checkbox.checked)
-                                .map(checkbox => checkbox.value);
-
-    const newPrice = basePrice + (selectedSports.length * sportPrice);
-    const priceTag = document.querySelector('.generic_price_tag .price');
-
-    const dollars = Math.floor(newPrice);
-    const cents = (newPrice % 1).toFixed(2).substring(2);
-
-    priceTag.querySelector('.currency').textContent = dollars;
-    priceTag.querySelector('.cent').textContent = '.' + cents;
-    priceTag.querySelector('.sign').textContent = '€';
-    priceTag.querySelector('.month').textContent = '/MON';
-
-    document.getElementById('selected-sports').textContent = 'Selected sports: ' + (selectedSports.length > 0 ? selectedSports.join(', ') : 'None');
-});
-});
+    const additionalPrice = 3.99 * checkboxes.length;
+    const totalPrice = basePrice + additionalPrice;
+    const euros = Math.floor(totalPrice);
+    const cents = (totalPrice % 1).toFixed(2).substring(2);
+    document.getElementById('price').innerText = `Total Price: €${totalPrice.toFixed(2)}`;
+    document.getElementById('currency_Profi_Paket').textContent = euros;
+    document.getElementById('cent_Profi_Paket').textContent = '.' + cents;
+}
