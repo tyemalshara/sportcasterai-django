@@ -43,14 +43,14 @@
           {% csrf_token %}
           {{ form|crispy }}
           <div id="sports" class="checkbox-container">
-            <label class="custom-checkbox" title="Coming soon">
+            <label class="custom-checkbox" title="Add Sport">
               <input type="checkbox" name="football" value="football" onclick="updatePrice()">
               <span class="checkmark"></span> Football</label>
             <label class="custom-checkbox disabled" title="Coming soon">
-              <input type="checkbox" name="basketball" value="basketball" onclick="updatePrice()">
+              <input type="checkbox" name="basketball" disabled value="basketball" onclick="updatePrice()">
               <span class="checkmark"></span> Basketball</label>
             <label class="custom-checkbox disabled" title="Coming soon">
-              <input type="checkbox" name="tennis" value="tennis" onclick="updatePrice()">
+              <input type="checkbox" name="tennis" disabled value="tennis" onclick="updatePrice()">
               <span class="checkmark"></span> Tennis</label>
           </div>
           <button type="submit" class="btn btn-light" name="get_profi_paket" value="get_profi_paket"><i class="bi bi-bag" style="font-size: 1rem;">Get Profi-Paket!</i></button>
